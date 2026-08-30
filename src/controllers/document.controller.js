@@ -9,12 +9,13 @@ export const uploadDocument = async (req, res) => {
       });
     }
 
-    const data = await pdfParse(req.file.buffer);
+    const parser = new PDFParse({ data: req.file.buffer });
+    const result = await parser.getText();
 
     const savedChunks = await processDocument(
-  data.text,
-  req.file.originalname
-);
+      result.text,
+      req.file.originalname
+    );
 
     res.status(201).json({
       message: "Document processed successfully",
