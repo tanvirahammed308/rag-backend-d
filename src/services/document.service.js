@@ -1,4 +1,4 @@
-import DocumentChunk from "../models/DocumentChunk.js";
+import documentChunk from "../models/documentChunk.js";
 import createEmbedding from "./embedding.service.js";
 import chunkText from "../utils/chunkText.js";
 
@@ -23,7 +23,7 @@ const processDocument = async (text, documentName) => {
   );
 
   // 3. Save all chunks and embeddings to MongoDB
-  const savedDocuments = await DocumentChunk.insertMany(documents);
+  const savedDocuments = await documentChunk.insertMany(documents);
 
   return savedDocuments;
 };

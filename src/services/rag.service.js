@@ -1,5 +1,5 @@
 import openai from "../config/openai.js";
-import DocumentChunk from "../models/DocumentChunk.js";
+import documentChunk from "../models/documentChunk.js";
 import createEmbedding from "./embedding.service.js";
 
 const askQuestion = async (question) => {
@@ -7,7 +7,7 @@ const askQuestion = async (question) => {
   const queryEmbedding = await createEmbedding(question);
 
   // 2. Vector search
-  const results = await DocumentChunk.aggregate([
+  const results = await documentChunk.aggregate([
     {
       $vectorSearch: {
         index: "vector_index",
