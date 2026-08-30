@@ -1,4 +1,4 @@
-import pdfParse from "pdf-parse";
+import { PDFParse } from "pdf-parse";
 import processDocument from "../services/document.service.js";
 
 export const uploadDocument = async (req, res) => {
