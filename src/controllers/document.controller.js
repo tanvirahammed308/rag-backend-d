@@ -11,7 +11,7 @@ export const uploadDocument = async (req, res) => {
       });
     }
 
-    const parser = new PDFParse({ data: req.file.buffer });
+    const parser = new pdfParse({ data: req.file.buffer });
     const result = await parser.getText();
 
     const savedChunks = await processDocument(
