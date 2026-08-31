@@ -1,3 +1,5 @@
+import "pdf-parse/worker";
+
 import { PDFParse } from "pdf-parse";
 import processDocument from "../services/document.service.js";
 
