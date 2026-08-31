@@ -1,6 +1,4 @@
-
-
-import pdfParse from "pdf-parse";
+import { extractText } from "unpdf";
 import processDocument from "../services/document.service.js";
 
 export const uploadDocument = async (req, res) => {
@@ -11,22 +9,21 @@ export const uploadDocument = async (req, res) => {
       });
     }
 
-    const parser = new pdfParse({ data: req.file.buffer });
-    const result = await parser.getText();
+    const { text } = await extractText(req.file.buffer);
 
     const savedChunks = await processDocument(
-      result.text,
+      text,
       req.file.originalname
     );
 
-    res.status(201).json({
+    return res.status(201).json({
       message: "Document processed successfully",
       chunks: savedChunks.length,
     });
   } catch (error) {
-    console.error(error);
+    console.error("PDF processing error:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       message: "Failed to process document",
       error: error.message,
     });
