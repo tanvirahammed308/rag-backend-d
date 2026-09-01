@@ -9,7 +9,11 @@ export const uploadDocument = async (req, res) => {
       });
     }
 
-    const { text } = await extractText(req.file.buffer);
+    const uint8Array = new Uint8Array(req.file.buffer);
+
+    const result = await extractText(uint8Array);
+
+    const text = result.text.join("\n");
 
     const savedChunks = await processDocument(
       text,
