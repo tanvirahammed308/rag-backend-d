@@ -630,22 +630,4 @@ unpdf
 Vercel
 ```
 
----
 
-# 📄 License
-
-This project is available for educational and development purposes.
-
-````
-
-এটা তোমার backend repository-র root-এ **`README.md`** নামে রাখলেই হবে।
-
-তারপর:
-
-```bash
-git add README.md
-git commit -m "add backend README"
-git push origin main
-````
-
-README-টা তোমার বর্তমান project structure এবং তুমি যে **`unpdf` দিয়ে `pdf-parse` সমস্যা solve করেছো**—সেটার সঙ্গে মিলিয়ে লেখা হয়েছে।
